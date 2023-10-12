@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="./shifumi.png">
+    <title>Shifoumi</title>
+</head>
+<body>
+    <h1><img class="logo" src="./shifumi.png"></img>Shifumi</h1>
+    <h3>Cliquez sur un bouton pour débuter la partie</h3>
+    <div class="board">
+        <button class="btn-rock">Pierre</button>
+        <button class="btn-paper">Feuille </button>
+        <button class="btn-scissors">Ciseaux</button>
+        <div class="resultat">🏆 </div>
+      
+    </div>
+    
+</body>
+<script>
+    const buttons = document.querySelectorAll('button');
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener('click', function(){
+            const player = buttons[i].innerHTML;
+            const bot = buttons[Math.floor(Math.random() * buttons.length)].innerHTML;
+            let result = "";
+
+            if (player === bot) {
+                result = "Egalité";
+            }
+            else if ((player === "Pierre" && bot === "Ciseaux") || (player === "Feuille" && bot === "Pierre") || (player === "Ciseaux" && bot === "Feuille")) {
+                result = "Gagné";
+            }
+            else {
+                result = "Perdu";
+            }
+            document.querySelector(".resultat").innerHTML = `
+           <p class="top">🏆🏆🏆</p>
+            Joueur🙂: ${player} </br>
+            Robot 🤖: ${bot} </br>
+            <b>Résultat 🏆: ${result}!
+            `;
+        });
+    }
+</script>
+
+</html>
+
+<!-- <img class="scissors" src="scissors-transformed.png" alt="ciseaux"> <img class="paper" src="airplane-transf.png" alt="feuille"><img class="rock" src="landslide-transf.png" alt="pierre">
+-->
